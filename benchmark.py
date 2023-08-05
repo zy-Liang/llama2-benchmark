@@ -14,7 +14,7 @@ def main(
     temperature: float = 0.6,
     top_p: float = 0.9,
     max_seq_len: int = 2048,
-    max_gen_len: int = 512,
+    max_gen_len: int = 2048,
     max_batch_size: int = 4,
 ):
     generator = Llama.build(
