@@ -24,14 +24,14 @@ def main(
         max_batch_size=max_batch_size,
     )
     
-    data_path = "/home/zyliang/llama2-benchmark/datasets/test/dev0.jsonl"
+    data_path = "/home/zyliang/llama2-benchmark/datasets/test/dev.jsonl"
     with open(data_path, "r") as data_file:
         for line in data_file:
             data = json.loads(line)
             question_str = f"question: {data['question']}"
             options = data["options"]
             options_str = f"options: A: {options['A']}, B: {options['B']}, C: {options['C']}, D: {options['D']}, E: {options['E']}."
-            prompts = [question_str, options_str, "The correct answer is "]
+            prompts = [question_str, options_str, "The correct option is "]
             results = generator.text_completion(
                 prompts,
                 max_gen_len=max_gen_len,
@@ -39,7 +39,7 @@ def main(
                 top_p=top_p,
             )
             result = results[-1]["generation"]
-            print(result)
+            print(result, "\n")
 
 
 if __name__ == "__main__":
