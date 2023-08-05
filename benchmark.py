@@ -38,11 +38,13 @@ def main(
                 temperature=temperature,
                 top_p=top_p,
             )
-            result = results["generation"]
             print(f"[Question {count+1}]")
             print(prompts)
             print("[Answer]")
-            print(result, "\n")
+            for index, result in enumerate(results):
+                print(f"[Part {index+1}]")
+                print(result["generation"])
+            print("\n")
 
 
 if __name__ == "__main__":
