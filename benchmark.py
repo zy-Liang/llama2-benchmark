@@ -24,7 +24,7 @@ def main(
         max_batch_size=max_batch_size,
     )
     
-    data_path = "datasets/test/dev0.jsonl"
+    data_path = "/home/zyliang/llama2-benchmark/datasets/test/dev0.jsonl"
     with open(data_path, "r") as data_file:
         for line in data_file:
             data = json.loads(line)
