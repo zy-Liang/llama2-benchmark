@@ -31,7 +31,7 @@ def main(
             question_str = f"question: {data['question']}"
             options = data["options"]
             options_str = f"options: A: {options['A']}, B: {options['B']}, C: {options['C']}, D: {options['D']}, E: {options['E']}."
-            prompts = [question_str, options_str, "The correct answer to the multiple choice question above is "]
+            prompts = [f"{question_str} {options_str}", "The correct answer to the multiple choice question above is "]
             results = generator.text_completion(
                 prompts,
                 max_gen_len=max_gen_len,
