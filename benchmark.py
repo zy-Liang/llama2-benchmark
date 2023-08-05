@@ -24,20 +24,22 @@ def main(
         max_batch_size=max_batch_size,
     )
     
-    # with open(data_file, "r") as data_file:
-    #     for line in data_file:
-    prompts = ["Test1", "Test2", "Test3"]
-    results = generator.text_completion(
-        prompts,
-        max_gen_len=max_gen_len,
-        temperature=temperature,
-        top_p=top_p,
-    )
-    # for prompt, result in zip(prompts, results):
-    #     print(prompt)
-    #     print(f"> {result['generation']}")
-    #     print("\n==================================\n")
-    print(results)
+    data_path = "datasets/test/dev0.jsonl"
+    with open(data_path, "r") as data_file:
+        for line in data_file:
+            data = json.loads(line)
+            question_str = f"question: {data['question']}"
+            options = data["options"]
+            options_str = f"options: A: {options['A']}, B: {options['B']}, C: {options['C']}, D: {options['D']}, E: {options['E']}."
+            prompts = [question_str, options_str, "The correct answer is "]
+            results = generator.text_completion(
+                prompts,
+                max_gen_len=max_gen_len,
+                temperature=temperature,
+                top_p=top_p,
+            )
+            result = results[-1]["generation"]
+            print(result)
 
 
 if __name__ == "__main__":
