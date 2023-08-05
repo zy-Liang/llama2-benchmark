@@ -14,7 +14,7 @@ def main(
     temperature: float = 0.6,
     top_p: float = 0.9,
     max_seq_len: int = 2048,
-    max_gen_len: int = 64,
+    max_gen_len: int = 128,
     max_batch_size: int = 4,
 ):
     generator = Llama.build(
@@ -31,14 +31,14 @@ def main(
             question_str = f"question: {data['question']}"
             options = data["options"]
             options_str = f"options: A: {options['A']}, B: {options['B']}, C: {options['C']}, D: {options['D']}, E: {options['E']}."
-            prompts = [question_str, options_str, "The correct option is "]
+            prompts = [question_str, options_str, "The correct answer to the multiple choice question above is "]
             results = generator.text_completion(
                 prompts,
                 max_gen_len=max_gen_len,
                 temperature=temperature,
                 top_p=top_p,
             )
-            result = results[-1]["generation"]
+            result = results["generation"]
             print(result, "\n")
 
 
