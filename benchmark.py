@@ -26,7 +26,7 @@ def main(
     
     data_path = "/home/zyliang/llama2-benchmark/datasets/test/dev.jsonl"
     with open(data_path, "r") as data_file:
-        for line in data_file:
+        for count, line in enumerate(data_file):
             data = json.loads(line)
             question_str = f"question: {data['question']}"
             options = data["options"]
@@ -39,6 +39,9 @@ def main(
                 top_p=top_p,
             )
             result = results["generation"]
+            print(f"[Question {count+1}]")
+            print(prompts)
+            print("[Answer]")
             print(result, "\n")
 
 
