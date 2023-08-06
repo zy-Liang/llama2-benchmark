@@ -29,8 +29,8 @@ def main(
     total = 0
     correct = 0
     
-    ground_truth = json.loads(open("/home/zyliang/llama2-benchmark/datasets/PubMedQA/test_ground_truth.json"))
-    questions = json.loads(open("/home/zyliang/llama2-benchmark/datasets/PubMedQA/test_set.json"))
+    ground_truth = json.load(open("/home/zyliang/llama2-benchmark/datasets/PubMedQA/test_ground_truth.json"))
+    questions = json.load(open("/home/zyliang/llama2-benchmark/datasets/PubMedQA/test_set.json"))
     for id, question in questions.items():
         context_str = " ".join(question["CONTEXTS"])
         question_str = question["QUESTION"]
