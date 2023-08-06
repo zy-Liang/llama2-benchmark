@@ -67,6 +67,8 @@ A chest X-ray shows a widened mediastinum. Which of the following is the next be
                 correct += 1
             else:
                 print("[INCORRECT]")
+    print(f"Total: {total}")
+    print(f"Correct: {correct}")
     print(f"Accuracy: {correct / total}")
 
 
