@@ -3,6 +3,7 @@
 
 import fire
 import json
+from datetime import datetime
 
 from llama import Llama
 
@@ -17,6 +18,8 @@ def main(
     max_gen_len: int = 1,
     max_batch_size: int = 4,
 ):
+    start_time = datetime.now() # record start time
+
     generator = Llama.build(
         ckpt_dir=ckpt_dir,
         tokenizer_path=tokenizer_path,
@@ -63,13 +66,15 @@ A chest X-ray shows a widened mediastinum. Which of the following is the next be
             result = results[-1]["generation"]
             total += 1
             if result == data["answer_idx"]:
-                print("[CORRECT]")
+                print(f"[CORRECT], Answer: {result}")
                 correct += 1
             else:
-                print("[INCORRECT]")
+                print(f"[INCORRECT], Answer: {result}")
     print(f"Total: {total}")
     print(f"Correct: {correct}")
     print(f"Accuracy: {correct / total}")
+    end_time = datetime.now()
+    print(f"Total time: {end_time - start_time}")
 
 
 if __name__ == "__main__":
