@@ -23,6 +23,9 @@ def main(
         max_seq_len=max_seq_len,
         max_batch_size=max_batch_size,
     )
+
+    total = 0
+    correct = 0
     
     data_path = "/home/zyliang/llama2-benchmark/datasets/test/dev0.jsonl"
     with open(data_path, "r") as data_file:
@@ -58,10 +61,13 @@ A chest X-ray shows a widened mediastinum. Which of the following is the next be
             #     print(result["generation"])
             # print("\n")
             result = results[-1]["generation"]
+            total += 1
             if result == data["answer_idx"]:
                 print("[CORRECT]")
+                correct += 1
             else:
                 print("[INCORRECT]")
+    print(f"Accuracy: {correct / total}")
 
 
 if __name__ == "__main__":
