@@ -54,22 +54,10 @@ A chest X-ray shows a widened mediastinum. Which of the following is the next be
                 temperature=temperature,
                 top_p=top_p,
             )
-            # print(f"[Question {count+1}]")
-            # for index, prompt in enumerate(prompts):
-            #     print(f"[Prompt {index+1}]")
-            #     print(prompt)
-            # print("[Answer]")
-            # for index, result in enumerate(results):
-            #     print(f"[Part {index+1}]")
-            #     print(result["generation"])
-            # print("\n")
             result = results[-1]["generation"]
             total += 1
             if result == data["answer_idx"]:
-                print(f"[CORRECT], Answer: {result}")
                 correct += 1
-            else:
-                print(f"[INCORRECT], Answer: {result}")
     print(f"Total: {total}")
     print(f"Correct: {correct}")
     print(f"Accuracy: {correct / total}")
