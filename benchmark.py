@@ -14,7 +14,7 @@ def main(
     temperature: float = 0.6,
     top_p: float = 0.9,
     max_seq_len: int = 2048,
-    max_gen_len: int = 128,
+    max_gen_len: int = 1,
     max_batch_size: int = 4,
 ):
     generator = Llama.build(
@@ -48,15 +48,20 @@ A chest X-ray shows a widened mediastinum. Which of the following is the next be
                 temperature=temperature,
                 top_p=top_p,
             )
-            print(f"[Question {count+1}]")
-            for index, prompt in enumerate(prompts):
-                print(f"[Prompt {index+1}]")
-                print(prompt)
-            print("[Answer]")
-            for index, result in enumerate(results):
-                print(f"[Part {index+1}]")
-                print(result["generation"])
-            print("\n")
+            # print(f"[Question {count+1}]")
+            # for index, prompt in enumerate(prompts):
+            #     print(f"[Prompt {index+1}]")
+            #     print(prompt)
+            # print("[Answer]")
+            # for index, result in enumerate(results):
+            #     print(f"[Part {index+1}]")
+            #     print(result["generation"])
+            # print("\n")
+            result = results[-1]["generation"]
+            if result == data["answer_idx"]:
+                print("[CORRECT]")
+            else:
+                print("[INCORRECT]")
 
 
 if __name__ == "__main__":
