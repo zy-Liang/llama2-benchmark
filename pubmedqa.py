@@ -13,8 +13,10 @@ def map_result(result: str):
         return "yes"
     elif result == "B":
         return "no"
-    else:
+    elif result == "C":
         return "maybe"
+    else:
+        return "error"
 
 
 def main(
