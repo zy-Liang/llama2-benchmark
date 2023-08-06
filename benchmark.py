@@ -32,16 +32,16 @@ def main(
             options = data["options"]
             options_str = f"A. {options['A']}, B. {options['B']}, C. {options['C']}, D: {options['D']}, E. {options['E']}."
             prompts = [f"Question: A 63-year-old man presents to the \
-                emergency department with the sudden onset of excruciating \
-                chest pain, which he describes as a tearing sensation. \
-                He was diagnosed with essential hypertension 20 years ago, \
-                but he is not compliant with his medications. On physical examination, \
-                the temperature is 37.1°C (98.8°F), heart rate is 95/min, \
-                and blood pressure is 195/90 mm Hg in the right arm and 160/80 mm Hg in the left arm. \
-                The pulses are absent in his right leg and diminished in his left leg. \
-                A chest X-ray shows a widened mediastinum. Which of the following is the next best step?\
-                \nA. CT scan, B. Intravenous sodium nitroprusside, C. Surgery, D. D-dimer, E. Intravenous ultrasound.\
-                \nAnswer: A\n{question_str}\n{options_str}\nAnswer:"]
+emergency department with the sudden onset of excruciating \
+chest pain, which he describes as a tearing sensation. \
+He was diagnosed with essential hypertension 20 years ago, \
+but he is not compliant with his medications. On physical examination, \
+the temperature is 37.1°C (98.8°F), heart rate is 95/min, \
+and blood pressure is 195/90 mm Hg in the right arm and 160/80 mm Hg in the left arm. \
+The pulses are absent in his right leg and diminished in his left leg. \
+A chest X-ray shows a widened mediastinum. Which of the following is the next best step?\
+\nA. CT scan, B. Intravenous sodium nitroprusside, C. Surgery, D. D-dimer, E. Intravenous ultrasound.\
+\nAnswer: A\n{question_str}\n{options_str}\nAnswer:"]
             results = generator.text_completion(
                 prompts,
                 max_gen_len=max_gen_len,
