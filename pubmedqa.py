@@ -8,6 +8,15 @@ from datetime import datetime
 from llama import Llama
 
 
+def map_result(result: str):
+    if result == "A":
+        return "yes"
+    elif result == "B":
+        return "no"
+    else:
+        return "maybe"
+
+
 def main(
     ckpt_dir: str,
     tokenizer_path: str,
@@ -45,14 +54,12 @@ Does fGF10 promote regional foetal cardiomyocyte proliferation and adult cardiom
             top_p=top_p,
         )
         result = results[-1]["generation"]
-        print(prompts)
-        print(result, "\n")
-        # total += 1
-        # if result == data["answer_idx"]:
-        #     correct += 1
-    # print(f"Total: {total}")
-    # print(f"Correct: {correct}")
-    # print(f"Accuracy: {correct / total}")
+        total += 1
+        if map_result(result) == ground_truth[id]:
+            correct += 1
+    print(f"Total: {total}")
+    print(f"Correct: {correct}")
+    print(f"Accuracy: {correct / total}")
     end_time = datetime.now()
     print(f"Total time: {end_time - start_time}")
 
