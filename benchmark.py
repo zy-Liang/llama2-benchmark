@@ -30,7 +30,7 @@ def main(
     total = 0
     correct = 0
     
-    data_path = "/home/zyliang/llama2-benchmark/datasets/test/dev0.jsonl"
+    data_path = "/home/zyliang/llama2-benchmark/datasets/MedQA/test.jsonl"
     with open(data_path, "r") as data_file:
         for count, line in enumerate(data_file):
             data = json.loads(line)
